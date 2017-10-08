@@ -40,4 +40,16 @@ class HTTPClient{
     {
         return curl_exec($this->_instance);
     }
+
+    public static function getContent($url)
+    {
+        $client = HTTPClient::getInstance($url);
+        $client->setHeader(
+            array(
+                CURLOPT_HEADER => 0,
+                CURLOPT_RETURNTRANSFER => 1
+            )
+        );
+        return $client->send();
+    }
 }
