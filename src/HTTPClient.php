@@ -47,7 +47,8 @@ class HTTPClient{
         $client->setHeader(
             array(
                 CURLOPT_HEADER => 0,
-                CURLOPT_RETURNTRANSFER => 1
+                CURLOPT_RETURNTRANSFER => 1,
+                CURLOPT_FOLLOWLOCATION => 1
             )
         );
         return $client->send();
