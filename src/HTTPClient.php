@@ -7,8 +7,37 @@
  */
 namespace Mu;
 class HTTPClient{
-    public function run($arg)
+
+    private $_instance = null;
+
+    public function __construct($url = null)
     {
-        var_dump($arg);
+        $this->_instance = curl_init();
+        if (is_null($url) == false) {
+            $this->setUrl($url);
+        }
+    }
+
+    public function setUrl($url)
+    {
+        curl_setopt($this->_instance, CURLOPT_URL, $url);
+    }
+
+    public static function getInstance($url = null)
+    {
+        return new HTTPClient($url);
+    }
+
+    public function setHeader($headers = array())
+    {
+        foreach ($headers as $header => $value) {
+            curl_setopt($this->_instance, $header, $value);
+        }
+        return $this;
+    }
+
+    public function send()
+    {
+        return curl_exec($this->_instance);
     }
 }
