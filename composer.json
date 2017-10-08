@@ -1,0 +1,17 @@
+{
+    "name": "skyfire/mu",
+    "description": "a tool library for php",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "skyfirelee",
+            "email": "739609084@qq.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {},
+    "autoload": {
+        "Mu\\": "src"
+    }
+}
